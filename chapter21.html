@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Loop</h1>
+    <ul>
+        <script>
+            document.write('<li>1</li>');
+
+            var i = 0;
+            while (i < 3) {
+                document.write('<li>2</li>');
+                document.write('<li>3</li>');
+                i = i + 1;
+            }
+            // i = 0이여서 '0,1,2'세개의 숫자가 조건(2가지 - 1.i는 3보다 작다 / 2.i는 반복할 떄마다 1이 증가된다)에 부합하므로 li형식의'2,3'이 3번 반복됨
+
+            document.write('<li>4</li>');
+
+        </script>
+    </ul>
+</body>
+
+</html>
