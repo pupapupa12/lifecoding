@@ -33,3 +33,18 @@ div vs span
         2. 줄바꿈이 되지 않아 스타일을 원하는 데로 입힐 수 있음
         3. 제어가능
 
+document
+dom
+window
+cookie
+offline web
+webRTC
+speech
+webGL
+
+
+* for문
+'for (let i=0; i<10; i++)'
+=> 'let'으로 i 선언
+==> 반복문이 반복되는 횟수(제한)설정
+===> i가 반복 될 형식의 규칙 (ex.i가 1씩 커진다)
