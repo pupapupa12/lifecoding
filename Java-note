@@ -43,6 +43,7 @@ speech
 webGL
 
 
+// PYO
 * for문
 'for (let i=0; i<10; i++)'
 => 'let'으로 i 선언
