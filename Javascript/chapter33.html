@@ -14,10 +14,13 @@
             setColor: function (color) {
                 var alist = document.querySelectorAll('a');
                 var i = 0;
-                while (i < alist.length) {
+                // while (i < alist.length) {
+                //    alist[i].style.color = color;
+                //    i = i + 1;
+                for (let i = 0; i < alist.length; i++) {
                     alist[i].style.color = color;
-                    i = i + 1;
                 }
+                //}
             }
         }
 

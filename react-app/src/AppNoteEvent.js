@@ -1,7 +1,8 @@
 import "./App.css";
 
+// "props"변수를 받는 "Header"라는 이름의 함수
 function Header(props) {
-    // console.log("props", props, props.title);
+    // <header>안에 링크를 갖고있으며 'props'라는 객체에 'title'키를 가지고 있는 값을 <h1>타입의 문자를 반환하는 클릭 이벤트를 실행 시 'props'에 설정되어있는 changemode를 사용해라
     return (
         <header>
             <h1>
@@ -20,8 +21,12 @@ function Header(props) {
     );
 }
 
+// "props"변수를 받는 "Navigation"이라는 이름의 함수
 function Navigation(props) {
+    // 변하지 않는 'lis'라는 이름의 빈 배열을 선언
     const lis = [];
+
+    // i = 0이고 'props'객체의 'topic'키 값의 갯수 만큼 반복되어서 작동하며 한번 작동 할때마다 i는 1씩 증가하는 반복문
     for (let i = 0; i < props.topics.length; i++) {
         let t = props.topics[i];
         lis.push(
