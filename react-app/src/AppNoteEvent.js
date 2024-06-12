@@ -34,6 +34,7 @@ function Navigation(props) {
                 <a
                     id={t.id}
                     href={"/read/" + t.id}
+                    // 클릭 시 이벤트 발생하며 props에 적용된 changemode를 id에 적용하여 실행
                     onClick={(event) => {
                         event.preventDefault();
                         props.onChangeMode(event.target.id);
@@ -77,6 +78,7 @@ function App() {
             {/* 컴포넌트 = Header / title = props  */}
             <Navigation
                 topics={topics}
+                // changemode는 id를 알림창으로 알림
                 onChangeMode={(id) => {
                     alert(id);
                 }}
