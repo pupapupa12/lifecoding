@@ -3,6 +3,7 @@ import "./App.css";
 // "props"변수를 받는 "Header"라는 이름의 함수
 function Header(props) {
     // <header>안에 링크를 갖고있으며 'props'라는 객체에 'title'키를 가지고 있는 값을 <h1>타입의 문자를 반환해라
+    // => props'라는 객체에 'title'키를 가지고 있는 값을 가진 컴포넌트를 반환한다.
     return (
         <header>
             <h1>
@@ -18,8 +19,9 @@ function Navigation(props) {
     const lis = [];
 
     // i = 0이고 'props'객체의 'topic'키 값의 갯수 만큼 반복되어서 작동하며 한번 작동 할때마다 i는 1씩 증가하는 반복문
+    // => i=0 부터 한번 반복할 때 마다 1씩 증가한다. 총 'props'객체의 'topic'배열 값의 갯수 만큼 반복된다.
     for (let i = 0; i < props.topics.length; i++) {
-        // t는 'props'객체의 'topic'이라는 키 이름을 가진 배열의 각각의 값
+        // t는 'props'객체의 'topic'이름을 가진 배열의 i번째 인덱스의 값을 가지고 있는 !변할 수 있는! 변수
         let t = props.topics[i];
 
         //

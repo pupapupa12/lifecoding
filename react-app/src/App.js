@@ -1,4 +1,6 @@
 import "./App.css";
+import { useState } from "react";
+import { useId } from "react";
 
 function Header(props) {
     // console.log("props", props, props.title);
@@ -31,7 +33,7 @@ function Navigation(props) {
                     href={"/read/" + t.id}
                     onClick={(event) => {
                         event.preventDefault();
-                        props.onChangeMode(event.target.id);
+                        props.onChangeMode(Number(event.target.id));
                     }}
                 >
                     {t.title}
@@ -56,27 +58,49 @@ function Article(props) {
 }
 
 function App() {
+    //"useState"의 인자는 초기의 값이며 '_mode'는 그 값을 변경시킴
+    //  const _mode = useState("WELCOME");
+    //  const mode = _mode[0];
+    //  const setMode = _mode[1];
+    //  console.log("_mode", _mode);
+    const [mode, setMode] = useState("WELCOME");
+    const [id, setId] = useState(null);
     const topics = [
         { id: 1, title: "html", body: "html is ..." },
         { id: 2, title: "css", body: "css is ..." },
         { id: 3, title: "js", body: "js is ..." },
     ];
+    let content = null;
+    if (mode === "WELCOME") {
+        content = <Article title="Welcome" body="Hello,WEB"></Article>;
+    } else if (mode === "READ") {
+        let title,
+            body = null;
+        for (let i = 0; i < topics.length; i++) {
+            if (topics[i].id === id) {
+                title = topics[i].title;
+                body = topics[i].body;
+            }
+        }
+        content = <Article title="Read" body="Hello,Read"></Article>;
+    }
+
     return (
         <div>
             <Header
-                title="REACT"
-                onChangeMode={function () {
-                    alert("Header");
+                title="WEB"
+                onChangeMode={() => {
+                    setMode("WELCOME");
                 }}
             ></Header>
-            {/* 컴포넌트 = Header / title = props  */}
             <Navigation
                 topics={topics}
-                onChangeMode={(id) => {
-                    alert(id);
+                onChangeMode={(_id) => {
+                    setMode("READ");
+                    setId(_id);
                 }}
             ></Navigation>
-            <Article title="Welcome" body="Hello, WEB"></Article>
+            {content}
             {/* <Article title="Hi" body="Hello, React"></Article> */}
         </div>
     );
