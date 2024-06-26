@@ -10,7 +10,6 @@ function Header(props) {
             <h1>
                 <a
                     href="/"
-                    // "=>" arrow function 어로우펑션
                     onClick={(event) => {
                         event.preventDefault();
                         props.onChangeMode();
@@ -33,7 +32,9 @@ function Navigation(props) {
         // t는 'props'객체의 'topic'이름을 가진 배열의 i번째 인덱스의 값을 가지고 있는 !변할 수 있는! 변수
         let t = props.topics[i];
         lis.push(
+            // key는't'의 'id'이며 이것을 나열한다.
             <li key={t.id}>
+                {/*  */}
                 <a
                     id={t.id}
                     href={"/read/" + t.id}
@@ -64,11 +65,14 @@ function Article(props) {
 }
 
 function App() {
-    //"useState"의 인자는 초기의 값이며 '_mode'는 그 값을 변경시킴
-    //  const _mode = useState("WELCOME");
-    //  const mode = _mode[0];
-    //  const setMode = _mode[1];
-    //  console.log("_mode", _mode);
+    // "useState"의 인자는 초기의 값이며 '_mode'는 그 값을 변경시킴
+    //      const _mode = useState("WELCOME");
+    //      const mode = _mode[0];
+    //      const setMode = _mode[1];
+    //      console.log("_mode", _mode);
+
+    // 'mode'라는 변수를 받는 'setMode'라는 이름을 가진 함수는 'useState'라는 리엑트에서 제공해주는 함수를 사용한다.
+    // 'useState' => 상태를 변경해주는 함수 (0:상태를 읽는 숫자 / 1: 함수를 확인하는 숫자)
     const [mode, setMode] = useState("WELCOME");
     const [id, setId] = useState(null);
     const topics = [
@@ -76,6 +80,7 @@ function App() {
         { id: 2, title: "css", body: "css is ..." },
         { id: 3, title: "js", body: "js is ..." },
     ];
+    // content가 아무것도 아닌 상태 null로 지정한다
     let content = null;
     if (mode === "WELCOME") {
         content = <Article title="Welcome" body="Hello,WEB"></Article>;
@@ -88,7 +93,8 @@ function App() {
                 body = topics[i].body;
             }
         }
-        content = <Article title="Read" body="Hello,Read"></Article>;
+        // 'content'는 Article title의 값 / body의 값을 의미한다.
+        content = <Article title={title} body={body}></Article>;
     }
 
     return (

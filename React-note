@@ -38,3 +38,40 @@
     -> {} 중괄호 사이의 문자는 문자열 아닌 표현식으로 취급
 
 
+----------------------------------------
+
+원래 데이터 유지하는 상태로 다른 데이터 부가적으로 입력 시 방법
+
+
+> 상태의 데이터타입이 원시데이터(PRIMITIVE)일 경우
+const [value, setValue] = useState(PRIMITIVE);
+    PRIMITIVE 원시데이터타입 종류
+        : 'string', 'number', bigint, 'boolean', undefined, symbol, null
+    => 원래대로 사용
+
+> 상태의 데이터타입이 범객체일 경우
+const [value, setValue] = useState(OBJECT);
+    범객체 타입 종류
+        : 'object', 'array'
+
+    -----
+    >> 사용방법 (object인 경우)
+        1. newValue = {...value}
+            -> '...' 3개를 붙이면 'value'는 복제된 "newValue"가 됨
+            (= 기존 데이터가 아닌 복제데이터 newValue가 변경)
+        2. setValue(newValue)
+            -> "setValue"로 "newValue"를 실행시키면 비로소 컴포넌트가 다시 실행
+
+    >> 사용방법 (array인 경우)
+        1. newValue = [...value]
+            -> '...' 3개를 붙이면 'value'는 복제된 "newValue"가 됨
+            (= 기존 데이터가 아닌 복제데이터 newValue가 변경)
+        2. setValue(newValue)
+            -> "setValue"로 "newValue"를 실행시키면 비로소 컴포넌트가 다시 실행
+    -----
+    => object 랑 array 차이점은 처음 선언 시 사용하는 괄호 차이
+
+
+
+
+
