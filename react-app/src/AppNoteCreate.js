@@ -56,10 +56,17 @@ function Article(props) {
     );
 }
 
+// props 변수를 가진 Create라는 이름의 함수
 function Create(props) {
     return (
         <article>
+            {/* h2사이즈로 Create 출력 */}
             <h2>Create</h2>
+            {/* form 형식을 사용함
+            onSubmit 이라는 리엑트 함수를 사용
+            title은 이벤트의 title value값을 선언
+            body는 이벤트의 body value 값을 선언
+            onCreate 함수를 사용하여 title과 body 변수 생성 */}
             <form
                 onSubmit={(event) => {
                     event.preventDefault();
@@ -68,12 +75,15 @@ function Create(props) {
                     props.onCreate(title, body);
                 }}
             >
+                {/* 'title'이름이며 사용자가 작성전 'title'이 표시되는 'text'타입의 입력 공간 */}
                 <p>
                     <input type="text" name="title" placeholder="title"></input>
                 </p>
+                {/* 'body'이름이며 사용자가 작성전 'body'가 표시되는 텍스트 입력 공간 */}
                 <p>
                     <textarea name="body" placeholder="body"></textarea>
                 </p>
+                {/* submit타입의 'Create'가 적힌 입력공간 */}
                 <p>
                     <input type="submit" value="Create"></input>
                 </p>
@@ -85,6 +95,8 @@ function Create(props) {
 function App() {
     const [mode, setMode] = useState("WELCOME");
     const [id, setId] = useState(null);
+    // Create 함수 사용 후 생성되는 구간을 설정
+    // nextId라는 변수를 가진 setNextId라는 이름을 가진 함수는 4번의 상태로 지정
     const [nextId, setNextId] = useState(4);
     const [topics, setTopics] = useState([
         { id: 1, title: "html", body: "html is ..." },
@@ -105,7 +117,11 @@ function App() {
             }
         }
         content = <Article title={title} body={body}></Article>;
-    } else if (mode === "CREATE") {
+    }
+    // mode가 "CREATE"인 경우 content를 생성하라
+    else if (mode === "CREATE") {
+        // onCreate는 _title과 _body라는 변수를 가지고 있는 함수?객체?
+        // newTopic은 id라는 키와 nextId라는 값 / title이라는 키와 _title이라는 값 / body라는 키와 _body라는 값을 가진 객체를 선언한다
         content = (
             <Create
                 onCreate={(_title, _body) => {
@@ -114,10 +130,13 @@ function App() {
                         title: _title,
                         body: _body,
                     };
+                    // newTopics은 'topics'배열을 복제한다
                     const newTopics = [...topics];
+                    // newTopics에 추가한다
                     newTopics.push(newTopic);
                     setTopics(newTopics);
                     //상세페이지
+                    // 상태를 "READ"로 설정하고 setNextId는 nextId에서 1 더한 값을 의미한다
                     setMode("READ");
                     setId(nextId);
                     setNextId(nextId + 1);
