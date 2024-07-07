@@ -165,7 +165,7 @@ function App() {
                 href="/create"
                 onClick={(event) => {
                     event.preventDefault();
-                    setMode("Create");
+                    setMode("CREATE");
                 }}
             >
                 Create

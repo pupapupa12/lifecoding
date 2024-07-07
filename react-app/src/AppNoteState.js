@@ -77,8 +77,10 @@ function App() {
     //      const setMode = _mode[1];
     //      console.log("_mode", _mode);
 
-    // 'mode'라는 변수를 받는 'setMode'라는 이름을 가진 함수로 선언하며 'useState'라는 리엑트에서 제공해주는 함수를 사용한다.
-    // 'useState'는 "WELCOME"이라는 상태를 가진다
+    // (X)'mode'라는 변수를 받는 'setMode'라는 이름을 가진 함수로 선언하며 'useState'라는 리엑트에서 제공해주는 함수를 사용한다.
+    // => (O) 'useState'라는 리액트에서 제공한 state 생성 함수를 사용해서, 'mode'라는 변수(state)와 이 'mode'의 값을 변경해주는 setMode 함수를 선언한다.
+    // (X)'useState'는 "WELCOME"이라는 상태를 가진다
+    // => (O) mode의 초기값은 "WELCOME"이다.
     const [mode, setMode] = useState("WELCOME");
     // 'id'라는 변수는 'setId'라는 이름을 가진 함수로 선언하며 'useState'라는 함수를 사용한다.
     // => 'useState'는 'null' 상태를 가진다
